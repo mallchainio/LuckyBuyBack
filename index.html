@@ -6,46 +6,233 @@
 <title>Lucky Buyback · LBB</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
-body{background:#0a0817;color:#e0e0ff;min-height:100vh;overflow-x:hidden;position:relative}
-body::before{content:'';position:absolute;inset:0;background:
-radial-gradient(circle at 20% 80%,rgba(120,70,255,.15),transparent 40%),
-radial-gradient(circle at 80% 20%,rgba(70,180,255,.15),transparent 40%),
-radial-gradient(circle at 50% 50%,rgba(100,50,200,.1),transparent 50%);
-animation:bgPulse 18s ease-in-out infinite alternate;z-index:-1}
-@keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
-.container{max-width:1200px;margin:auto;padding:60px 30px 100px}
-.header{text-align:center;margin-bottom:90px;animation:fadeUp 1.2s ease-out .3s forwards;opacity:0}
-.logo{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#7b4eff,#b390ff);margin:auto auto 40px;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:900;color:#fff;box-shadow:0 0 70px rgba(123,78,255,.7)}
-.title{font-size:52px;font-weight:800;background:linear-gradient(90deg,#a78afe,#7b4eff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.slogan{font-size:24px;color:#b8b0ff;margin-top:16px}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
 
-.card{background:rgba(20,18,40,.7);backdrop-filter:blur(16px);border-radius:32px;
-padding:52px;margin-bottom:60px;border:1px solid rgba(123,78,255,.3);
-box-shadow:0 15px 50px rgba(0,0,0,.4);opacity:0;transform:translateY(50px);
-animation:fadeUp .9s ease-out forwards}
-@keyframes fadeUp{to{opacity:1;transform:none}}
+body {
+  background: #0a0817;
+  color: #e0e0ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
 
-.card h3{text-align:center;font-size:30px;color:#c8a8ff;margin-bottom:36px}
-.card h3::after{content:'';display:block;width:140px;height:5px;
-background:linear-gradient(90deg,#7b4eff,#b390ff);margin:28px auto;border-radius:3px}
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(120, 70, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(70, 180, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(100, 50, 200, 0.1), transparent 50%);
+  animation: bgPulse 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
 
-.intro-text{text-align:center;font-size:19px;line-height:2.1;max-width:960px;margin:auto;color:#d8d0ff}
+@keyframes bgPulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
 
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;margin-top:50px}
-.feature{text-align:center;background:rgba(45,40,100,.4);padding:40px;border-radius:24px}
-.feature .icon{font-size:48px;margin-bottom:20px;display:block}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px 100px;
+}
 
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:60px}
-.step{text-align:center;background:rgba(45,40,100,.5);padding:45px;border-radius:28px}
-.step span{font-size:64px;font-weight:900;color:#7b4eff}
+.header {
+  text-align: center;
+  margin-bottom: 90px;
+  opacity: 0;
+  animation: fadeUp 1.2s ease-out 0.3s forwards;
+}
 
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px}
-.link-item{text-align:center;background:rgba(45,40,100,.5);padding:32px;border-radius:24px}
-.link-item a{color:#fff;word-break:break-all;text-decoration:none}
-.label{color:#b8b0ff;display:block;margin-bottom:10px}
+.logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b4eff, #b390ff);
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  font-weight: 900;
+  color: #ffffff;
+  box-shadow: 0 0 70px rgba(123, 78, 255, 0.7);
+}
 
-.footer{text-align:center;margin-top:80px;padding:60px;color:#9999cc;border-top:1px solid rgba(123,78,255,.2)}
+.title {
+  font-size: 52px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #a78afe, #7b4eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+}
+
+.slogan {
+  font-size: 24px;
+  color: #b8b0ff;
+  margin-top: 16px;
+}
+
+/* 通用卡片 */
+.card {
+  background: rgba(20, 18, 40, 0.7);
+  backdrop-filter: blur(16px);
+  border-radius: 32px;
+  padding: 52px;
+  margin-bottom: 60px;
+  border: 1px solid rgba(123, 78, 255, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 0.9s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h3 {
+  font-size: 30px;
+  margin-bottom: 36px;
+  text-align: center;
+  color: #c8a8ff;
+}
+
+.card h3::after {
+  content: '';
+  display: block;
+  width: 140px;
+  height: 5px;
+  background: linear-gradient(90deg, #7b4eff, #b390ff);
+  margin: 28px auto 0;
+  border-radius: 3px;
+}
+
+.intro-text {
+  font-size: 19px;
+  line-height: 2.1;
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  color: #d8d0ff;
+}
+
+/* Q&A 样式 */
+.qa-list {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.qa-item {
+  background: rgba(45, 40, 100, 0.35);
+  border-radius: 22px;
+  padding: 36px 40px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(123, 78, 255, 0.25);
+}
+
+.qa-q {
+  font-size: 20px;
+  font-weight: 700;
+  color: #d6c4ff;
+  margin-bottom: 18px;
+}
+
+.qa-a p {
+  font-size: 18px;
+  line-height: 2;
+  color: #e0dcff;
+  margin-bottom: 14px;
+}
+
+/* 流程 */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 60px;
+}
+
+.step {
+  text-align: center;
+  padding: 45px 25px;
+  background: rgba(45, 40, 100, 0.5);
+  border-radius: 28px;
+}
+
+.step span {
+  font-size: 64px;
+  font-weight: 900;
+  color: #7b4eff;
+}
+
+/* 特性 */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.feature {
+  text-align: center;
+  padding: 40px;
+  background: rgba(45, 40, 100, 0.4);
+  border-radius: 24px;
+}
+
+.feature .icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+/* 链接 */
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.link-item {
+  background: rgba(45, 40, 100, 0.5);
+  border-radius: 24px;
+  padding: 32px;
+  text-align: center;
+}
+
+.link-item a {
+  color: #ffffff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.label {
+  font-size: 16px;
+  color: #b8b0ff;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #9999cc;
+  border-top: 1px solid rgba(123, 78, 255, 0.2);
+}
 </style>
 </head>
 
@@ -59,70 +246,112 @@ background:linear-gradient(90deg,#7b4eff,#b390ff);margin:28px auto;border-radius
   <div class="slogan">把偶然事件，转化为长期价值结构</div>
 </div>
 
-<!-- ✅ 新增：项目方筹码明牌与锁仓机制 -->
+<!-- 项目方筹码 Q&A -->
 <div class="card">
-<h3>项目方筹码 · 明牌与锁仓机制</h3>
-<p class="intro-text">
-⚠️ 项目方筹码采用 <strong>明牌机制</strong><br>
-地址、数量与锁仓规则全部公开透明<br>
-拒绝老鼠仓，拒绝暗箱操作
-</p>
+  <h3>项目方筹码 · 明牌与锁仓 Q&A</h3>
 
-<div class="features">
-<div class="feature"><span class="icon">📦</span><p><strong>7.58 亿 LBB</strong><br>内盘阶段明牌购入<br>用于长期建设</p></div>
-<div class="feature"><span class="icon">🔒</span><p><strong>锁仓 6 个月</strong><br>降低短期市场影响</p></div>
-<div class="feature"><span class="icon">⏳</span><p><strong>到期续锁</strong><br>提前 15 天公告</p></div>
-<div class="feature"><span class="icon">🔥</span><p><strong>最终解锁</strong><br>利润覆盖成本后<br>直接销毁</p></div>
+  <p class="intro-text" style="margin-bottom:50px;">
+    ⚠️ 项目方筹码采用 <strong>明牌机制</strong>，地址、数量与锁仓规则公开透明，拒绝暗箱操作。
+  </p>
+
+  <div class="qa-list">
+
+    <div class="qa-item">
+      <div class="qa-q">Q1：为什么项目方持仓 7.58 亿 $LBB ？</div>
+      <div class="qa-a">
+        <p>答：默认的发币从内盘到外盘需要较长时间，项目方不愿意通过老鼠仓或隐性地址操作市场，我们选择明牌机制。</p>
+        <p>同时，为了应对未来可能的大平台合作，需要预留充足筹码，因此项目方选择在内盘阶段明牌公开购入 7.58 亿 $LBB，持仓透明、可查。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q2：项目方为什么锁仓半年？</div>
+      <div class="qa-a">
+        <p>答：一方面是为了排除用户顾虑，降低项目方对短期市场的影响；</p>
+        <p>另一方面也是为了避免在合作窗口期因筹码不足而影响项目推进。</p>
+        <p>项目方筹码已全部进入锁仓状态，规则提前公示。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q3：如果半年后到解锁日期，你们会直接解锁吗？</div>
+      <div class="qa-a">
+        <p>答：不会。</p>
+        <p>在锁仓到期前 15 天，项目方将提前公告并续锁，同样续锁 6 个月，避免对市场造成冲击。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q4：那么你们会在什么时候彻底解锁？</div>
+      <div class="qa-a">
+        <p>答：当项目累计利润明确超过创业成本时，项目方将进行最终解锁，</p>
+        <p>解锁代币不进入二级市场，直接打入黑洞地址销毁，完成项目阶段性使命。</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-q">Q5：其他地址是谁锁的？</div>
+      <div class="qa-a">
+        <p>答：除了 dev 地址，其他用户锁仓大概是因为觉得项目方靠谱，所以以此表示支持。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="links" style="margin-top:50px;">
+    <div class="link-item">
+      <span class="label">锁仓合约</span>
+      <a>0x407993575c91ce7643a4d4ccacc9a98c36ee1bbe</a>
+    </div>
+    <div class="link-item">
+      <span class="label">项目方地址</span>
+      <a>0x4717e20a5d42e4f35aedfc3582301523ece69c32</a>
+    </div>
+  </div>
 </div>
 
-<div class="links">
-<div class="link-item"><span class="label">锁仓合约</span><a>0x407993575c91ce7643a4d4ccacc9a98c36ee1bbe</a></div>
-<div class="link-item"><span class="label">项目方地址</span><a>0x4717e20a5d42e4f35aedfc3582301523ece69c32</a></div>
+<!-- 原有介绍：机制说明 -->
+<div class="card">
+  <h3>机制说明</h3>
+  <p class="intro-text">
+    Lucky Buyback 是一种完全基于<strong>外部事件触发</strong>的代币机制。<br><br>
+    当系统因不可预测事件获得外部资金时，不进行现金分配，<br>
+    而是将该价值引入二级市场，通过回购、排名分配与销毁，<br>
+    改变代币供给结构本身。
+  </p>
 </div>
-</div>
-
-<!-- 🔹 以下全部是你【原来的介绍】，完整保留 -->
 
 <div class="card">
-<h3>机制说明</h3>
-<p class="intro-text">
-Lucky Buyback 是一种完全基于<strong>外部事件触发</strong>的代币机制。<br><br>
-当系统获得外部资金时，不进行现金分配，<br>
-而是通过回购、分配与销毁，改变供给结构本身。
-</p>
+  <h3>资金流转逻辑</h3>
+  <div class="flow">
+    <div class="step"><span>100%</span><p>外部资金用于回购 LBB</p></div>
+    <div class="step"><span>50%</span><p>分配给持仓排名前 20</p></div>
+    <div class="step"><span>40%</span><p>永久销毁</p></div>
+  </div>
 </div>
 
 <div class="card">
-<h3>资金流转逻辑</h3>
-<div class="flow">
-<div class="step"><span>100%</span><p>用于回购 LBB</p></div>
-<div class="step"><span>50%</span><p>分配给前 20 名</p></div>
-<div class="step"><span>40%</span><p>永久销毁</p></div>
-</div>
-</div>
-
-<div class="card">
-<h3>机制特性</h3>
-<div class="features">
-<div class="feature"><span class="icon">🧭</span><p>事件驱动</p></div>
-<div class="feature"><span class="icon">🛒</span><p>真实回购</p></div>
-<div class="feature"><span class="icon">🔥</span><p>供给减少</p></div>
-<div class="feature"><span class="icon">📐</span><p>结构优先</p></div>
-</div>
+  <h3>机制特性</h3>
+  <div class="features">
+    <div class="feature"><span class="icon">🧭</span><p>事件驱动</p></div>
+    <div class="feature"><span class="icon">🛒</span><p>真实回购</p></div>
+    <div class="feature"><span class="icon">🔥</span><p>供给减少</p></div>
+    <div class="feature"><span class="icon">📐</span><p>结构优先</p></div>
+  </div>
 </div>
 
 <div class="card">
-<h3>合约与社区</h3>
-<div class="links">
-<div class="link-item"><span class="label">合约</span><a>0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
-<div class="link-item"><span class="label">官网</span><a href="https://luckybuyback.com">luckybuyback.com</a></div>
-<div class="link-item"><span class="label">Telegram</span><a href="https://t.me/LuckyBuyBack">@LuckyBuyBack</a></div>
-</div>
+  <h3>合约与社区</h3>
+  <div class="links">
+    <div class="link-item"><span class="label">合约地址</span><a>0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
+    <div class="link-item"><span class="label">官网</span><a href="https://luckybuyback.com">https://luckybuyback.com</a></div>
+    <div class="link-item"><span class="label">Telegram</span><a href="https://t.me/LuckyBuyBack">https://t.me/LuckyBuyBack</a></div>
+  </div>
 </div>
 
 <div class="footer">
-Lucky Buyback · LBB © 2026<br>
-Mechanism-driven · No promised return · Supply-focused
+  Lucky Buyback · LBB © 2026<br>
+  Mechanism-driven · No promised return · Supply-focused
 </div>
 
 </div>
