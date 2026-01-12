@@ -21,11 +21,10 @@ body {
   position: relative;
 }
 
-/* 背景动态光晕 */
 body::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background:
     radial-gradient(circle at 20% 80%, rgba(120, 70, 255, 0.15) 0%, transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(70, 180, 255, 0.15) 0%, transparent 40%),
@@ -40,16 +39,13 @@ body::before {
   100% { opacity: 1; transform: scale(1.08); }
 }
 
-/* 容器 */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 30px 100px;
   position: relative;
-  z-index: 1;
 }
 
-/* Header */
 .header {
   text-align: center;
   margin-bottom: 90px;
@@ -68,14 +64,14 @@ body::before {
   justify-content: center;
   font-size: 56px;
   font-weight: 900;
-  color: #ffffff;
+  color: #fff;
   box-shadow: 0 0 70px rgba(123, 78, 255, 0.7);
   animation: logoFloat 7s ease-in-out infinite;
 }
 
 @keyframes logoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
 }
 
 .title {
@@ -85,17 +81,14 @@ body::before {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 3px;
-  margin-bottom: 20px;
 }
 
 .slogan {
   font-size: 24px;
   color: #b8b0ff;
-  font-weight: 500;
-  opacity: 0.9;
+  margin-top: 16px;
 }
 
-/* 卡片 */
 .card {
   background: rgba(20, 18, 40, 0.7);
   backdrop-filter: blur(16px);
@@ -103,249 +96,102 @@ body::before {
   padding: 52px;
   margin-bottom: 60px;
   border: 1px solid rgba(123, 78, 255, 0.3);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 50px rgba(0,0,0,.4);
   opacity: 0;
   transform: translateY(50px);
-  animation: fadeUp 0.9s ease-out forwards;
-  transition: all 0.5s ease;
+  animation: fadeUp .9s ease-out forwards;
   position: relative;
-  overflow: hidden;
 }
-
-/* ⭐唯一修复点：禁止伪元素拦截点击 */
-.card::before {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(123, 78, 255, 0.25) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.7s;
-  pointer-events: none;
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 70px rgba(123, 78, 255, 0.3);
-}
-
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.4s; }
-.card:nth-child(4) { animation-delay: 0.6s; }
-.card:nth-child(5) { animation-delay: 0.8s; }
-.card:nth-child(6) { animation-delay: 1.0s; }
 
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
+  to { opacity:1; transform:translateY(0); }
 }
 
 .card h3 {
-  font-size: 30px;
-  margin-bottom: 36px;
   text-align: center;
+  font-size: 30px;
   color: #c8a8ff;
-  position: relative;
+  margin-bottom: 36px;
 }
 
 .card h3::after {
-  content: '';
-  display: block;
-  width: 140px;
-  height: 5px;
-  background: linear-gradient(90deg, #7b4eff, #b390ff);
-  margin: 28px auto 0;
-  border-radius: 3px;
-  animation: lineGrow 1.8s ease-out;
-}
-
-@keyframes lineGrow {
-  from { width: 0; }
-  to { width: 140px; }
+  content:'';
+  display:block;
+  width:140px;
+  height:5px;
+  background:linear-gradient(90deg,#7b4eff,#b390ff);
+  margin:28px auto 0;
+  border-radius:3px;
 }
 
 .intro-text {
+  text-align: center;
   font-size: 19px;
   line-height: 2.1;
-  text-align: center;
   max-width: 960px;
   margin: 0 auto;
   color: #d8d0ff;
 }
 
-/* 流程图 */
-.flow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  margin-top: 60px;
-  position: relative;
-}
-
-.flow::after {
-  content: '';
-  position: absolute;
-  top: 100px;
-  left: 15%;
-  right: 15%;
-  height: 5px;
-  background: linear-gradient(90deg, transparent, #7b4eff, transparent);
-  opacity: 0.7;
-}
-
-.step {
-  text-align: center;
-  padding: 45px 25px;
-  background: rgba(45, 40, 100, 0.5);
-  border-radius: 28px;
-  transition: all 0.5s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.step:hover {
-  transform: scale(1.1) translateY(-12px);
-  background: rgba(90, 70, 180, 0.7);
-  box-shadow: 0 25px 50px rgba(123, 78, 255, 0.4);
-}
-
-.step span {
-  font-size: 68px;
-  font-weight: 900;
-  color: #7b4eff;
-  display: block;
-  margin-bottom: 24px;
-  text-shadow: 0 0 25px rgba(123, 78, 255, 0.7);
-}
-
-.step p {
-  font-size: 18px;
-  color: #d0c8ff;
-}
-
-/* 特点网格 */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 40px;
-  margin: 60px auto;
-  max-width: 1000px;
+  margin-top: 50px;
 }
 
 .feature {
-  text-align: center;
-  padding: 40px;
   background: rgba(45, 40, 100, 0.4);
   border-radius: 24px;
-  transition: all 0.4s ease;
+  padding: 40px;
+  text-align: center;
+  transition: .4s;
 }
 
 .feature:hover {
-  background: rgba(90, 70, 180, 0.6);
+  background: rgba(90,70,180,.6);
   transform: translateY(-10px);
 }
 
 .feature .icon {
   font-size: 48px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: block;
-  animation: sparkle 2.5s infinite;
 }
 
-@keyframes sparkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-/* 链接区 */
 .links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
   gap: 30px;
-  margin: 50px auto;
-  max-width: 1000px;
+  margin-top: 40px;
 }
 
 .link-item {
-  background: rgba(45, 40, 100, 0.5);
+  background: rgba(45,40,100,.5);
   border-radius: 24px;
   padding: 32px;
   text-align: center;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(123, 78, 255, 0.3);
-}
-
-.link-item:hover {
-  background: rgba(90, 70, 180, 0.7);
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(123, 78, 255, 0.3);
+  border: 1px solid rgba(123,78,255,.3);
 }
 
 .link-item a {
-  color: #ffffff;
-  font-size: 18px;
-  text-decoration: none;
+  color: #fff;
   word-break: break-all;
-}
-
-.link-item .label {
-  font-size: 16px;
-  color: #b8b0ff;
-  margin-bottom: 12px;
-  display: block;
-}
-
-/* 公告按钮 */
-.announcement-btn {
-  display: inline-block;
-  padding: 18px 48px;
-  background: linear-gradient(90deg, #7b4eff, #b390ff);
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 700;
-  border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 12px 35px rgba(123, 78, 255, 0.5);
-  transition: all 0.4s ease;
-  margin: 20px 0;
 }
 
-.announcement-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(123, 78, 255, 0.6);
-  background: linear-gradient(90deg, #8a5dff, #c0a0ff);
+.label {
+  display:block;
+  color:#b8b0ff;
+  margin-bottom:10px;
 }
 
-/* Footer */
 .footer {
-  margin-top: 60px;
-  padding: 60px;
   text-align: center;
-  font-size: 16px;
+  margin-top: 80px;
+  padding: 60px;
   color: #9999cc;
-  border-top: 1px solid rgba(123, 78, 255, 0.2);
-  opacity: 0;
-  animation: fadeUp 1s ease-out 0.8s forwards;
-}
-
-/* 手机端 */
-@media (max-width: 900px) {
-  .container { padding: 40px 20px 80px; }
-  .logo { width: 110px; height: 110px; font-size: 46px; }
-  .title { font-size: 40px; }
-  .slogan { font-size: 20px; }
-  .card { padding: 40px 28px; margin-bottom: 50px; }
-  .intro-text { font-size: 17px; line-height: 2; }
-  .flow { grid-template-columns: 1fr; gap: 60px; }
-  .flow::after { display: none; }
-  .step { padding: 55px 25px; }
-  .features { grid-template-columns: 1fr; gap: 35px; }
-  .links { grid-template-columns: 1fr; gap: 25px; }
-  .link-item { padding: 28px; }
-  .announcement-btn { font-size: 20px; padding: 16px 40px; }
+  border-top: 1px solid rgba(123,78,255,.2);
 }
 </style>
 </head>
@@ -353,80 +199,73 @@ body::before {
 <body>
 <div class="container">
 
-  <div class="header">
-    <div class="logo">LBB</div>
-    <div class="title">Lucky Buyback</div>
-    <div class="slogan">把偶然事件，转化为长期价值结构</div>
+<div class="header">
+  <div class="logo">LBB</div>
+  <div class="title">Lucky Buyback</div>
+  <div class="slogan">把偶然事件，转化为长期价值结构</div>
+</div>
+
+<!-- 项目方筹码明牌与锁仓机制 -->
+<div class="card">
+  <h3>项目方筹码 · 明牌与锁仓机制</h3>
+
+  <p class="intro-text">
+    ⚠️ 项目方筹码采用 <strong>明牌机制</strong><br>
+    地址、数量与锁仓规则全部公开透明<br>
+    拒绝老鼠仓，拒绝暗箱操作
+  </p>
+
+  <div class="features">
+
+    <div class="feature">
+      <span class="icon">📦</span>
+      <p><strong>为何持仓 7.58 亿 LBB</strong><br>
+      项目方不通过隐性地址操纵市场，<br>
+      为未来平台合作预留筹码，<br>
+      在内盘阶段明牌购入。</p>
+    </div>
+
+    <div class="feature">
+      <span class="icon">🔒</span>
+      <p><strong>为何锁仓 6 个月</strong><br>
+      降低短期影响，<br>
+      避免合作窗口期筹码不足。</p>
+    </div>
+
+    <div class="feature">
+      <span class="icon">⏳</span>
+      <p><strong>到期是否解锁？</strong><br>
+      不会。<br>
+      到期前 15 天公告并续锁。</p>
+    </div>
+
+    <div class="feature">
+      <span class="icon">🔥</span>
+      <p><strong>最终解锁方式</strong><br>
+      利润覆盖成本后，<br>
+      解锁代币直接销毁，<br>
+      不进入二级市场。</p>
+    </div>
+
+    <div class="feature">
+      <span class="icon">🤝</span>
+      <p><strong>其他锁仓地址</strong><br>
+      均为社区用户自愿锁仓，<br>
+      表达对机制的认可。</p>
+    </div>
+
   </div>
 
-  <!-- 机制说明 -->
-  <div class="card">
-    <h3>机制说明</h3>
-    <p class="intro-text">
-      Lucky Buyback 是一种完全基于<strong>外部事件触发</strong>的代币机制。<br><br>
-      当系统因不可预测事件获得外部资金时，
-      不进行现金分配，也不承诺任何形式的固定回报，<br>
-      而是将该价值引入二级市场，通过回购、排名分配与销毁，
-      改变代币供给结构本身。<br><br>
-      运气不会被放大为投机预期，
-      只会被转化为一次真实发生的市场行为。
-    </p>
-  </div>
-
-  <!-- 资金流转 -->
-  <div class="card">
-    <h3>资金流转逻辑</h3>
-    <div class="flow">
-      <div class="step">
-        <span>100%</span>
-        <p>外部事件产生的资金<br>用于二级市场回购 LBB</p>
-      </div>
-      <div class="step">
-        <span>50%</span>
-        <p>回购所得代币<br>按规则分配给持仓排名前 20</p>
-      </div>
-      <div class="step">
-        <span>40%</span>
-        <p>回购所得代币<br>直接永久销毁，减少流通</p>
-      </div>
+  <div class="links">
+    <div class="link-item">
+      <span class="label">锁仓合约</span>
+      <a>0x407993575c91ce7643a4d4ccacc9a98c36ee1bbe</a>
+    </div>
+    <div class="link-item">
+      <span class="label">项目方地址</span>
+      <a>0x4717e20a5d42e4f35aedfc3582301523ece69c32</a>
     </div>
   </div>
-
-  <!-- 特性 -->
-  <div class="card">
-    <h3>机制特性</h3>
-    <div class="features">
-      <div class="feature"><span class="icon">🧭</span><p><strong>事件驱动</strong><br>不依赖持续资金输入</p></div>
-      <div class="feature"><span class="icon">🛒</span><p><strong>真实市场行为</strong><br>所有回购来自公开市场</p></div>
-      <div class="feature"><span class="icon">🔥</span><p><strong>供给侧变化</strong><br>销毁即永久移除流通</p></div>
-      <div class="feature"><span class="icon">📐</span><p><strong>结构优先</strong><br>机制大于短期价格</p></div>
-    </div>
-  </div>
-
-  <!-- 社区 -->
-  <div class="card">
-    <h3>合约与社区</h3>
-    <div class="links">
-      <div class="link-item"><span class="label">合约地址</span><a href="#">0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
-      <div class="link-item"><span class="label">官方网站</span><a href="https://luckybuyback.com" target="_blank">https://luckybuyback.com</a></div>
-      <div class="link-item"><span class="label">X 推特</span><a href="https://x.com/Lucky_Buyback" target="_blank">https://x.com/Lucky_Buyback</a></div>
-      <div class="link-item"><span class="label">Telegram 社区</span><a href="https://t.me/LuckyBuyBack" target="_blank">https://t.me/LuckyBuyBack</a></div>
-    </div>
-  </div>
-
-  <!-- 公告 -->
-  <div class="card">
-    <h3>最新公告</h3>
-    <div style="text-align:center;padding:20px 0;">
-      <p style="font-size:19px;margin-bottom:40px;color:#d0c8ff;line-height:1.8;">
-        所有项目动态、回购记录、事件触发公告<br>均在此频道实时发布
-      </p>
-      <a href="https://t.me/s/LuckyBuyBack" target="_blank" class="announcement-btn">
-        立即查看公告频道 →
-      </a>
-    </div>
-  </div>
-
 </div>
 
 <div class="footer">
@@ -434,5 +273,6 @@ body::before {
   Mechanism-driven · No promised return · Supply-focused
 </div>
 
+</div>
 </body>
 </html>
