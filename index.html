@@ -174,6 +174,8 @@ body::before {
   font-size: 64px;
   font-weight: 900;
   color: #7b4eff;
+  display: block;
+  margin-bottom: 16px;
 }
 
 /* 特性 */
@@ -216,6 +218,8 @@ body::before {
   color: #ffffff;
   text-decoration: none;
   word-break: break-all;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .label {
@@ -227,11 +231,156 @@ body::before {
 
 .footer {
   margin-top: 60px;
-  padding: 60px;
+  padding: 60px 30px;
   text-align: center;
   font-size: 16px;
   color: #9999cc;
   border-top: 1px solid rgba(123, 78, 255, 0.2);
+}
+
+/* ────────────────────────────────────────────────
+   响应式适配（核心修复横向滚动 + 手机体验）
+───────────────────────────────────────────────── */
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 16px 80px;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .logo {
+    width: 110px;
+    height: 110px;
+    font-size: 46px;
+  }
+
+  .title {
+    font-size: 38px;
+    letter-spacing: 2px;
+  }
+
+  .slogan {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 32px 20px;
+    margin-bottom: 40px;
+    border-radius: 24px;
+  }
+
+  .card h3 {
+    font-size: 26px;
+  }
+
+  .card h3::after {
+    width: 100px;
+  }
+
+  .intro-text {
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .qa-list {
+    max-width: 100%;
+  }
+
+  .qa-item {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .qa-q {
+    font-size: 18px;
+  }
+
+  .qa-a p {
+    font-size: 16px;
+  }
+
+  .flow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 40px;
+  }
+
+  .step {
+    padding: 32px 20px;
+  }
+
+  .step span {
+    font-size: 52px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .feature {
+    padding: 32px 20px;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .link-item {
+    padding: 24px 18px;
+  }
+
+  .link-item a {
+    font-size: 15px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+
+  .footer {
+    padding: 40px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 32px 12px 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .slogan {
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 90px;
+    height: 90px;
+    font-size: 40px;
+  }
+
+  .card {
+    padding: 28px 16px;
+  }
+
+  .qa-item {
+    padding: 24px 16px;
+  }
 }
 </style>
 </head>
@@ -239,120 +388,120 @@ body::before {
 <body>
 <div class="container">
 
-<!-- Header -->
-<div class="header">
-  <div class="logo">LBB</div>
-  <div class="title">Lucky Buyback</div>
-  <div class="slogan">把偶然事件，转化为长期价值结构</div>
-</div>
-
-<!-- 项目方筹码 Q&A -->
-<div class="card">
-  <h3>项目方筹码 · 明牌与锁仓 Q&A</h3>
-
-  <p class="intro-text" style="margin-bottom:50px;">
-    ⚠️ 项目方筹码采用 <strong>明牌机制</strong>，地址、数量与锁仓规则公开透明，拒绝暗箱操作。
-  </p>
-
-  <div class="qa-list">
-
-    <div class="qa-item">
-      <div class="qa-q">Q1：为什么项目方持仓 7.58 亿 $LBB ？</div>
-      <div class="qa-a">
-        <p>答：默认的发币从内盘到外盘需要较长时间，项目方不愿意通过老鼠仓或隐性地址操作市场，我们选择明牌机制。</p>
-        <p>同时，为了应对未来可能的大平台合作，需要预留充足筹码，因此项目方选择在内盘阶段明牌公开购入 7.58 亿 $LBB，持仓透明、可查。</p>
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">Q2：项目方为什么锁仓半年？</div>
-      <div class="qa-a">
-        <p>答：一方面是为了排除用户顾虑，降低项目方对短期市场的影响；</p>
-        <p>另一方面也是为了避免在合作窗口期因筹码不足而影响项目推进。</p>
-        <p>项目方筹码已全部进入锁仓状态，规则提前公示。</p>
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">Q3：如果半年后到解锁日期，你们会直接解锁吗？</div>
-      <div class="qa-a">
-        <p>答：不会。</p>
-        <p>在锁仓到期前 15 天，项目方将提前公告并续锁，同样续锁 6 个月，避免对市场造成冲击。</p>
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">Q4：那么你们会在什么时候彻底解锁？</div>
-      <div class="qa-a">
-        <p>答：当项目累计利润明确超过创业成本时，项目方将进行最终解锁，</p>
-        <p>解锁代币不进入二级市场，直接打入黑洞地址销毁，完成项目阶段性使命。</p>
-      </div>
-    </div>
-
-    <div class="qa-item">
-      <div class="qa-q">Q5：其他地址是谁锁的？</div>
-      <div class="qa-a">
-        <p>答：除了 dev 地址，其他用户锁仓大概是因为觉得项目方靠谱，所以以此表示支持。</p>
-      </div>
-    </div>
-
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">LBB</div>
+    <div class="title">Lucky Buyback</div>
+    <div class="slogan">把偶然事件，转化为长期价值结构</div>
   </div>
 
-  <div class="links" style="margin-top:50px;">
-    <div class="link-item">
-      <span class="label">锁仓合约</span>
-      <a>0x407993575c91ce7643a4d4ccacc9a98c36ee1bbe</a>
+  <!-- 项目方筹码 Q&A -->
+  <div class="card">
+    <h3>项目方筹码 · 明牌与锁仓 Q&A</h3>
+
+    <p class="intro-text" style="margin-bottom:50px;">
+      ⚠️ 项目方筹码采用 <strong>明牌机制</strong>，地址、数量与锁仓规则公开透明，拒绝暗箱操作。
+    </p>
+
+    <div class="qa-list">
+
+      <div class="qa-item">
+        <div class="qa-q">Q1：为什么项目方持仓 7.58 亿 $LBB ？</div>
+        <div class="qa-a">
+          <p>答：默认的发币从内盘到外盘需要较长时间，项目方不愿意通过老鼠仓或隐性地址操作市场，我们选择明牌机制。</p>
+          <p>同时，为了应对未来可能的大平台合作，需要预留充足筹码，因此项目方选择在内盘阶段明牌公开购入 7.58 亿 $LBB，持仓透明、可查。</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2：项目方为什么锁仓半年？</div>
+        <div class="qa-a">
+          <p>答：一方面是为了排除用户顾虑，降低项目方对短期市场的影响；</p>
+          <p>另一方面也是为了避免在合作窗口期因筹码不足而影响项目推进。</p>
+          <p>项目方筹码已全部进入锁仓状态，规则提前公示。</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3：如果半年后到解锁日期，你们会直接解锁吗？</div>
+        <div class="qa-a">
+          <p>答：不会。</p>
+          <p>在锁仓到期前 15 天，项目方将提前公告并续锁，同样续锁 6 个月，避免对市场造成冲击。</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q4：那么你们会在什么时候彻底解锁？</div>
+        <div class="qa-a">
+          <p>答：当项目累计利润明确超过创业成本时，项目方将进行最终解锁，</p>
+          <p>解锁代币不进入二级市场，直接打入黑洞地址销毁，完成项目阶段性使命。</p>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q5：其他地址是谁锁的？</div>
+        <div class="qa-a">
+          <p>答：除了 dev 地址，其他用户锁仓大概是因为觉得项目方靠谱，所以以此表示支持。</p>
+        </div>
+      </div>
+
     </div>
-    <div class="link-item">
-      <span class="label">项目方地址</span>
-      <a>0x4717e20a5d42e4f35aedfc3582301523ece69c32</a>
+
+    <div class="links" style="margin-top:50px;">
+      <div class="link-item">
+        <span class="label">锁仓合约</span>
+        <a>0x407993575c91ce7643a4d4ccacc9a98c36ee1bbe</a>
+      </div>
+      <div class="link-item">
+        <span class="label">项目方地址</span>
+        <a>0x4717e20a5d42e4f35aedfc3582301523ece69c32</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- 原有介绍：机制说明 -->
-<div class="card">
-  <h3>机制说明</h3>
-  <p class="intro-text">
-    Lucky Buyback 是一种完全基于<strong>外部事件触发</strong>的代币机制。<br><br>
-    当系统因不可预测事件获得外部资金时，不进行现金分配，<br>
-    而是将该价值引入二级市场，通过回购、排名分配与销毁，<br>
-    改变代币供给结构本身。
-  </p>
-</div>
-
-<div class="card">
-  <h3>资金流转逻辑</h3>
-  <div class="flow">
-    <div class="step"><span>100%</span><p>外部资金用于回购 LBB</p></div>
-    <div class="step"><span>50%</span><p>分配给持仓排名前 20</p></div>
-    <div class="step"><span>40%</span><p>永久销毁</p></div>
+  <!-- 机制说明 -->
+  <div class="card">
+    <h3>机制说明</h3>
+    <p class="intro-text">
+      Lucky Buyback 是一种完全基于<strong>外部事件触发</strong>的代币机制。<br><br>
+      当系统因不可预测事件获得外部资金时，不进行现金分配，<br>
+      而是将该价值引入二级市场，通过回购、排名分配与销毁，<br>
+      改变代币供给结构本身。
+    </p>
   </div>
-</div>
 
-<div class="card">
-  <h3>机制特性</h3>
-  <div class="features">
-    <div class="feature"><span class="icon">🧭</span><p>事件驱动</p></div>
-    <div class="feature"><span class="icon">🛒</span><p>真实回购</p></div>
-    <div class="feature"><span class="icon">🔥</span><p>供给减少</p></div>
-    <div class="feature"><span class="icon">📐</span><p>结构优先</p></div>
+  <div class="card">
+    <h3>资金流转逻辑</h3>
+    <div class="flow">
+      <div class="step"><span>100%</span><p>外部资金用于回购 LBB</p></div>
+      <div class="step"><span>50%</span><p>分配给持仓排名前 20</p></div>
+      <div class="step"><span>40%</span><p>永久销毁</p></div>
+    </div>
   </div>
-</div>
 
-<div class="card">
-  <h3>合约与社区</h3>
-  <div class="links">
-    <div class="link-item"><span class="label">合约地址</span><a>0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
-    <div class="link-item"><span class="label">官网</span><a href="https://luckybuyback.com">https://luckybuyback.com</a></div>
-    <div class="link-item"><span class="label">Telegram</span><a href="https://t.me/LuckyBuyBack">https://t.me/LuckyBuyBack</a></div>
+  <div class="card">
+    <h3>机制特性</h3>
+    <div class="features">
+      <div class="feature"><span class="icon">🧭</span><p>事件驱动</p></div>
+      <div class="feature"><span class="icon">🛒</span><p>真实回购</p></div>
+      <div class="feature"><span class="icon">🔥</span><p>供给减少</p></div>
+      <div class="feature"><span class="icon">📐</span><p>结构优先</p></div>
+    </div>
   </div>
-</div>
 
-<div class="footer">
-  Lucky Buyback · LBB © 2026<br>
-  Mechanism-driven · No promised return · Supply-focused
-</div>
+  <div class="card">
+    <h3>合约与社区</h3>
+    <div class="links">
+      <div class="link-item"><span class="label">合约地址</span><a>0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
+      <div class="link-item"><span class="label">官网</span><a href="https://luckybuyback.com">https://luckybuyback.com</a></div>
+      <div class="link-item"><span class="label">Telegram</span><a href="https://t.me/LuckyBuyBack">https://t.me/LuckyBuyBack</a></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Lucky Buyback · LBB © 2026<br>
+    Mechanism-driven · No promised return · Supply-focused
+  </div>
 
 </div>
 </body>
