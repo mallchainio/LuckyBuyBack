@@ -57,15 +57,20 @@ body::before {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #7b4eff, #b390ff);
+  background: linear-gradient(135deg, #7b4eff, #b390ff); /* 备用渐变背景 */
   margin: 0 auto 40px;
+  overflow: hidden; /* 确保图片不溢出 */
+  box-shadow: 0 0 70px rgba(123, 78, 255, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 56px;
-  font-weight: 900;
-  color: #ffffff;
-  box-shadow: 0 0 70px rgba(123, 78, 255, 0.7);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 自动填充圆形，保持比例 */
+  display: block;
 }
 
 .title {
@@ -239,7 +244,7 @@ body::before {
 }
 
 /* ────────────────────────────────────────────────
-   响应式适配（核心修复横向滚动 + 手机体验）
+   响应式适配
 ───────────────────────────────────────────────── */
 html, body {
   overflow-x: hidden;
@@ -261,7 +266,7 @@ html, body {
   .logo {
     width: 110px;
     height: 110px;
-    font-size: 46px;
+    margin-bottom: 32px;
   }
 
   .title {
@@ -371,7 +376,7 @@ html, body {
   .logo {
     width: 90px;
     height: 90px;
-    font-size: 40px;
+    margin-bottom: 24px;
   }
 
   .card {
@@ -388,9 +393,11 @@ html, body {
 <body>
 <div class="container">
 
-  <!-- Header -->
+  <!-- Header - 已替换为真实 logo -->
   <div class="header">
-    <div class="logo">LBB</div>
+    <div class="logo">
+      <img src="https://pbs.twimg.com/profile_images/2007139110931345408/zSvM6Fxp.jpg" alt="Lucky Buyback Logo">
+    </div>
     <div class="title">Lucky Buyback</div>
     <div class="slogan">把偶然事件，转化为长期价值结构</div>
   </div>
@@ -494,6 +501,7 @@ html, body {
     <div class="links">
       <div class="link-item"><span class="label">合约地址</span><a>0xf36e2f7f7bd1480b6e1d59cfd91717cad9944444</a></div>
       <div class="link-item"><span class="label">官网</span><a href="https://luckybuyback.com">https://luckybuyback.com</a></div>
+      <div class="link-item"><span class="label">推特 X</span><a href="https://x.com/Lucky_Buyback">https://x.com/Lucky_Buyback</a></div>
       <div class="link-item"><span class="label">Telegram</span><a href="https://t.me/LuckyBuyBack">https://t.me/LuckyBuyBack</a></div>
     </div>
   </div>
